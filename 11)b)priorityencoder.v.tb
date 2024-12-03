@@ -1,0 +1,13 @@
+module priorityencoder_tb();
+reg[3:0]i;
+wire[1:0]y;
+priorityencoder uut(.i(i),.y(y));
+initial begin
+#100;i=4'b1000;
+#100;i=4'bx100;
+#100;i=4'bxx10;
+#100;i=4'bxxx1;
+#100;i=4'bxxx1;
+$stop();
+end
+endmodule
