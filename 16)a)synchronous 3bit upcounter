@@ -1,0 +1,11 @@
+module sync_up_3(q,clk,rst);
+input clk,rst;
+output reg[2:0]q;
+always@(posedge clk)
+begin
+if(rst==1)
+q<=3'b000;
+else
+q<=q+1;
+end
+endmodule
