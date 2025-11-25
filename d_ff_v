@@ -1,0 +1,11 @@
+module d_flipflop(q,clk,d);
+input d,clk;
+output reg q;
+always@(posedge clk)
+begin
+case({d})
+1'b0:q<=d;
+1'b1:q<=d;
+endcase
+end
+endmodule
