@@ -1,0 +1,19 @@
+module t_flipflop(q,t,clk,rst);
+input t,clk,rst;
+output reg q;
+always@(posedge clk)
+begin
+if(rst)
+begin
+q <= 0;
+end
+else if(t)
+begin
+q <= ~q;
+end
+else
+begin
+q <= q;
+end
+end
+endmodule
