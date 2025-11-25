@@ -1,0 +1,12 @@
+module t_flipflop_tb();
+reg t,clk;
+wire q;
+t_flipflop uut(.t(t),.clk(clk),.q(q));
+initial
+begin
+#100;t=0;clk=0;
+#100;t=0;clk=1;
+#100;t=1;clk=0;
+#100;t=1;clk=1;
+end
+endmodule
