@@ -1,0 +1,16 @@
+module siso_1_tb();
+reg clk,rst,si;
+wire [2:0]q;
+siso_1 uut(.q(q),.rst(rst),.clk(clk),.si(si));
+always #10 clk=~clk;
+initial begin
+si=0; rst=1;clk=0;
+#25;rst=0;
+@(posedge clk);si=1;
+@(posedge clk);si=0;
+@(posedge clk);si=1;
+@(posedge clk);si=1'bx;
+@(posedge clk);si=1'bx;
+ #50 $finish;
+end
+endmodule
