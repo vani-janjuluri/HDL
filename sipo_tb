@@ -1,0 +1,16 @@
+module sipo_tb();
+reg s;
+reg clk,rst;
+wire [3:0]q;
+sipo uut(.s(s),.q(q),.rst(rst),.clk(clk));
+always #10 clk=~clk;
+initial begin
+s=0;rst=1;clk=0;
+#10;rst=0;
+@(posedge clk);s=1;
+@(posedge clk);s=0;
+@(posedge clk);s=0;
+@(posedge clk);s=1;
+#100 $finish;
+end
+endmodule
