@@ -1,0 +1,13 @@
+module siso_1(q,clk,rst,si);
+input clk,rst,si;
+output reg[2:0]q;
+always @(posedge clk)
+if(rst)
+q<=3'b000;
+else 
+begin
+q[2]<=si;
+q[1]<=q[2];
+q[0]<=q[1];
+end
+endmodule
