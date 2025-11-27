@@ -1,0 +1,15 @@
+module pipo_tb();
+wire [3:0]q;
+reg clk,rst;
+reg [3:0]p;
+pipo uut(.p(p),.clk(clk),.rst(rst),.q(q));
+always #10 clk=~clk;
+initial begin
+p=0;clk=0;rst=1;
+#25;rst=0;
+@(posedge clk);p=1;
+@(posedge clk);p=0;
+@(posedge clk);p=0;
+@(posedge clk);p=1;
+end
+endmodule
