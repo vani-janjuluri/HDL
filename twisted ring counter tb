@@ -1,0 +1,12 @@
+module twisted_ring_counter_tb();
+reg clk,rst;
+wire [2:0]q;
+twisted_ring_counter uut(.q(q),.clk(clk),.rst(rst));
+always #10 clk=~clk;
+initial begin
+rst=1;clk=0;
+#25;rst=0;
+repeat(4)@(posedge clk);
+$finish;
+end
+endmodule
