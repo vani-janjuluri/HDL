@@ -1,0 +1,26 @@
+module simple_fsm_tb();
+reg clk;
+reg rst;
+reg start;
+wire state;
+wire next_state;
+simple_fsm dut(.clk(clk),.rst(rst),.start(start),.state(state),.next_state(next_state));
+always #5 clk=~clk;
+initial begin
+clk=0;
+rst=1;
+start=0;
+#10;
+rst=0;//////hold rst for 10 ns
+#10;
+start=0;//stay in idle
+#10;
+start=1;///move to work
+#20;
+start=1;///stay in work
+#10;
+start=0;///retrun to idle
+#20;
+$finish;
+end
+endmodule
