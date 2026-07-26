@@ -1,0 +1,37 @@
+module simple_fsm(clk,rst,start,state,next_state);
+input clk;
+input rst;
+input start;
+output reg state;
+output reg next_state;
+parameter a=1'b0;
+parameter b=1'b1;
+always@(posedge clk or posedge rst)
+begin
+if(rst)
+state <= a;
+else
+state <= next_state;
+end
+always@(*)
+begin
+case(state)
+a:
+begin
+if(start)
+next_state <= b;
+else
+next_state <= a;
+end
+b:
+begin
+if(start)
+next_state <= b;
+else
+next_state <= a;
+end
+default:
+next_state = a;
+endcase
+end
+endmodule
